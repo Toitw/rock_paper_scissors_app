@@ -34,18 +34,43 @@ function getUserChoice() {
     }
 }
 
-//Create a function that takes computerChoice and userChoice as parameters
-//and play a round, comparing the results, announcing a winner and 
+//Create a function that 
+//play a round, comparing the results, announcing a winner and 
 //returning the winner
 function playRound() {
 
     let winner = "";
     let computerChoice = getComputerChoice();
+    console.log(computerChoice);
     let userChoice = getUserChoice();
+    console.log(userChoice);
     if (computerChoice === "ROCK" && userChoice === "PAPER") {
+        winner = "USER";
+        console.log(`${computerChoice} beats ${userChoice}, ${winner} wins!`);
+        return winner;
+    } else if (computerChoice === "PAPER" && userChoice === "ROCK") {
         winner = "COMPUTER";
-        console.log("Rock beats Paper, ${winner} wins!");
+        console.log(`${computerChoice} beats ${userChoice}, ${winner} wins!`);
+        return winner;
+    } else if (computerChoice === "PAPER" && userChoice === "SCISSORS") {
+        winner = "USER";
+        console.log(`${userChoice} beat ${computerChoice}, ${winner} wins!`);
+        return winner;
+    } else if (computerChoice === "SCISSORS" && userChoice === "PAPER") {
+        winner = "COMPUTER";
+        console.log(`${computerChoice} beat ${userChoice}, ${winner} wins!`);
+        return winner;
+    } else if (computerChoice === "SCISSORS" && userChoice === "ROCK") {
+        winner = "USER";
+        console.log(`${userChoice} beat ${computerChoice}, ${winner} wins!`);
+        return winner;
+    } else if (computerChoice === "ROCK" && userChoice === "SCISSORS") {
+        winner = "COMPUTER";
+        console.log(`${computerChoice} beat ${userChoice}, ${winner} wins!`);
+        return winner;
+    } else {
+        winner = "DRAW"
+        console.log(`It's a ${winner}`);
         return winner;
     }
-    console.log("probando");
 }
