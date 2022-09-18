@@ -24,13 +24,14 @@ function getComputerChoice() {
 //you a message warning you (still pending to start from the beginning changing the message)
 //if the spelling is right, it returns the user choice in capital letters
 function getUserChoice() {
-    let wrongUserChoiceMessage = "Please, check your spelling";
+    let wrongUserChoiceMessage = "Please, check your spelling and try again";
     let userChoice = prompt("Write down your choice", "Rock, Paper or Scissors");
     userChoice = userChoice.toUpperCase();
     if (userChoice === "ROCK" || userChoice === "PAPER" || userChoice === "SCISSORS") {
         return userChoice;
     } else {
-        return wrongUserChoiceMessage;  
+        alert(wrongUserChoiceMessage);
+        return getUserChoice();  
     }
 }
 
@@ -46,7 +47,7 @@ function playRound() {
     console.log(userChoice);
     if (computerChoice === "ROCK" && userChoice === "PAPER") {
         winner = "USER";
-        console.log(`${computerChoice} beats ${userChoice}, ${winner} wins!`);
+        console.log(`${userChoice} beats ${computerChoice}, ${winner} wins!`);
         return winner;
     } else if (computerChoice === "PAPER" && userChoice === "ROCK") {
         winner = "COMPUTER";
@@ -68,9 +69,31 @@ function playRound() {
         winner = "COMPUTER";
         console.log(`${computerChoice} beat ${userChoice}, ${winner} wins!`);
         return winner;
-    } else {
+    } else if (computerChoice === userChoice) {
         winner = "DRAW"
-        console.log(`It's a ${winner}`);
         return winner;
     }
+}
+
+//Create a function that repeat the round several times until one of the players get to 5. 
+//Create a variable to count each victory and display the winner
+
+function game() {
+    userCount = 0;
+    computerCount = 0;
+
+    for (let i=0; i < 5; i++) {
+        winner = playRound();
+        if(winner === "USER") {
+            userCount += 1;
+            console.log(`User: ${userCount} - Computer: ${computerCount}`);
+        } else if (winner === "COMPUTER") {
+            computerCount += 1;
+            console.log(`User: ${userCount} - Computer: ${computerCount}`);
+        } else {
+            i--
+            console.log("It's a draw!")
+        }
+    }
+    return `Final result is: User: ${userCount} - Computer: ${computerCount}`;
 }
