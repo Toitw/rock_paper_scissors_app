@@ -19,22 +19,20 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function showResult () {
-    console.log(this.innerHTML);
-}
-//Create a function that pop up a prompt asking for the choice. Once the user writes it down,
-//it converts it to upper cases and check if the spelling is right. If is not right, it send 
-//you a message warning you (still pending to start from the beginning changing the message)
-//if the spelling is right, it returns the user choice in capital letters
+//Create a function that extract the user result form each click and play a round
     const selectionButton = document.querySelector(".selectionButton");
     const rockSelection = document.querySelector("#rockSelection");
     const paperSelection = document.querySelector("#paperSelection");
     const scissorsSelection = document.querySelector("#scissorsSelection");
     rockSelection.addEventListener("click", () => {
-        console.log(rockSelection.innerHTML);
+        userChoice = rockSelection.innerHTML;
+        playRound();
     });
     paperSelection.addEventListener("click", () => {
         console.log(paperSelection.innerHTML);
+    });
+    scissorsSelection.addEventListener("click", () => {
+        console.log(scissorsSelection.innerHTML);
     });
 
 
@@ -46,7 +44,6 @@ function playRound() {
     let winner = "";
     let computerChoice = getComputerChoice();
     console.log(computerChoice);
-    let userChoice = getUserChoice();
     console.log(userChoice);
     if (computerChoice === "ROCK" && userChoice === "PAPER") {
         winner = "USER";
