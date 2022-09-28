@@ -19,21 +19,24 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+function showResult () {
+    console.log(this.innerHTML);
+}
 //Create a function that pop up a prompt asking for the choice. Once the user writes it down,
 //it converts it to upper cases and check if the spelling is right. If is not right, it send 
 //you a message warning you (still pending to start from the beginning changing the message)
 //if the spelling is right, it returns the user choice in capital letters
-function getUserChoice() {
-    let wrongUserChoiceMessage = "Please, check your spelling and try again";
-    let userChoice = prompt("Write down your choice", "Rock, Paper or Scissors");
-    userChoice = userChoice.toUpperCase();
-    if (userChoice === "ROCK" || userChoice === "PAPER" || userChoice === "SCISSORS") {
-        return userChoice;
-    } else {
-        alert(wrongUserChoiceMessage);
-        return getUserChoice();  
-    }
-}
+    const selectionButton = document.querySelector(".selectionButton");
+    const rockSelection = document.querySelector("#rockSelection");
+    const paperSelection = document.querySelector("#paperSelection");
+    const scissorsSelection = document.querySelector("#scissorsSelection");
+    rockSelection.addEventListener("click", () => {
+        console.log(rockSelection.innerHTML);
+    });
+    paperSelection.addEventListener("click", () => {
+        console.log(paperSelection.innerHTML);
+    });
+
 
 //Create a function that 
 //play a round, comparing the results, announcing a winner and 
@@ -71,29 +74,9 @@ function playRound() {
         return winner;
     } else if (computerChoice === userChoice) {
         winner = "DRAW"
+        console.log(winner);
         return winner;
     }
 }
 
-//Create a function that repeat the round several times until one of the players get to 5. 
-//Create a variable to count each victory and display the winner
 
-function game() {
-    userCount = 0;
-    computerCount = 0;
-
-    for (let i=0; i < 5; i++) {
-        winner = playRound();
-        if(winner === "USER") {
-            userCount += 1;
-            console.log(`User: ${userCount} - Computer: ${computerCount}`);
-        } else if (winner === "COMPUTER") {
-            computerCount += 1;
-            console.log(`User: ${userCount} - Computer: ${computerCount}`);
-        } else {
-            i--
-            console.log("It's a draw!")
-        }
-    }
-    return `Final result is: User: ${userCount} - Computer: ${computerCount}`;
-}
