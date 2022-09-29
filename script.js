@@ -38,7 +38,7 @@ function getComputerChoice() {
     });
 
 
-//Create a function to keep a score 
+//Create a function to keep and display a score 
 
 let userScore = 0;
 let computerScore = 0;
@@ -69,6 +69,29 @@ function scoreCounter () {
 //         computerScore += 1;
 //     }
 // }
+
+//Create a function to finish the game and display a message
+// once anyone gets to 5 point
+function endGame () {
+    if (userScore === 5) {
+        alert("User wins");
+    } else if (computerScore === 5) {
+        alert("Computer wins");
+    } else {
+        return;
+    }
+}
+
+//Function to reset the game
+function resetGame () {
+    userScore = 0;
+    computerScore = 0;
+    userScore.innerHTML = 0;
+    computerScore.innerHTML = 0;
+}
+
+//Function to show a "Play again" button
+
 
 //Create a function that 
 //play a round, comparing the results, announcing a winner and 
@@ -101,7 +124,8 @@ function playRound() {
         console.log(winner);
     };
 
-    return scoreCounter();
+    scoreCounter();
+    endGame();
 }
 
 //Variables to show the score
