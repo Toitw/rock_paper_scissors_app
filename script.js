@@ -42,6 +42,7 @@ function getComputerChoice() {
 
 let userScore = 0;
 let computerScore = 0;
+
 function scoreCounter () {
     switch (winner) {
         case "DRAW":
@@ -53,6 +54,10 @@ function scoreCounter () {
         case "COMPUTER":
             computerScore++;
     }
+    let userScoreHTML = document.querySelector(".userScore");
+    userScoreHTML.textContent = userScore;
+    let computerScoreHTML = document.querySelector(".computerScore");
+    computerScoreHTML.textContent = computerScore;
 }
 // In the end I decided to use scoreCounter with switch
 // function scoreCounter2() {
@@ -100,6 +105,5 @@ function playRound() {
 }
 
 //Variables to show the score
-let userScoreHTML = document.querySelector(".userScore");
-userScoreHTML.textContent = userScore;
+
 
