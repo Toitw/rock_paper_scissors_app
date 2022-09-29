@@ -43,11 +43,11 @@ function getComputerChoice() {
     });
 
 
+
 //Create a function to keep and display a score and announce the winnerº
 
 let userScore = 0;
 let computerScore = 0;
-
 const resultTextContainer = document.querySelector(".resultTextContainer");
 const resultText = document.createElement("p");
 resultText.classList.add("resultText");
