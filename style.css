@@ -1,0 +1,96 @@
+* {
+    background-color: rgb(41, 39, 39);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    margin: 100px;
+}
+
+.userScoreContainer {
+    min-width: 272px;
+}
+
+.userScoreContainer,
+.computerScoreContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: blanchedalmond;
+}
+
+h1 {
+    color: rgb(226, 43, 104);
+    margin: 60px, 60px, 10px, 60px;
+    font-size: 100px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: aliceblue;
+    font-size: 70px;
+    margin-top: 20px;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 50px;
+}
+
+.playAgainButton,
+.selectionButton {
+    padding: 20px;
+    font-size: 25px;
+    min-width: 200px;
+    margin-top: 50px;
+    border-radius: 40px;
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.selectionButton:not(:hover) {
+    filter: grayscale(100%);
+}
+
+#rockSelection {
+    background-color: rgb(240, 99, 158);
+    font-weight: bold;
+}
+
+#paperSelection {
+    background-color: rgb(100, 180, 250);
+    font-weight: bold;
+}
+
+#scissorsSelection {
+    background-color: rgb(241, 178, 95);
+    font-weight: bold;
+}
+
+.userScore,
+.computerScore {
+    margin: 0;
+}
+
+.playAgainButton {
+    background-color: rgb(100, 250, 162);
+    font-weight: bold;
+}
+
+.userName,
+.computerName {
+    margin-bottom: 0;
+}
