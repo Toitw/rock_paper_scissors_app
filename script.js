@@ -43,58 +43,63 @@ function getComputerChoice() {
 let userScore = 0;
 let computerScore = 0;
 function scoreCounter () {
-    switch (playRound) {
+    switch (winner) {
         case "DRAW":
             return;
             break;
         case "USER":
-            return userScore + 1;
+            userScore++;
             break;
         case "COMPUTER":
-            return computerScore ++;
+            computerScore++;
     }
 }
+// In the end I decided to use scoreCounter with switch
+// function scoreCounter2() {
+//     if (winner === "DRAW") {
+//         return;
+//     } else if (winner === "USER") {
+//         userScore++;
+//     } else {
+//         computerScore += 1;
+//     }
+// }
 
 //Create a function that 
 //play a round, comparing the results, announcing a winner and 
 //returning the winner
+let winner = "";
 function playRound() {
-
-    let winner = "";
     let computerChoice = getComputerChoice();
     console.log(computerChoice);
     console.log(userChoice);
     if (computerChoice === "ROCK" && userChoice === "PAPER") {
         winner = "USER";
         console.log(`${userChoice} beats ${computerChoice}, ${winner} wins!`);
-        return winner;
     } else if (computerChoice === "PAPER" && userChoice === "ROCK") {
         winner = "COMPUTER";
         console.log(`${computerChoice} beats ${userChoice}, ${winner} wins!`);
-        return winner;
     } else if (computerChoice === "PAPER" && userChoice === "SCISSORS") {
         winner = "USER";
         console.log(`${userChoice} beat ${computerChoice}, ${winner} wins!`);
-        return winner;
     } else if (computerChoice === "SCISSORS" && userChoice === "PAPER") {
         winner = "COMPUTER";
         console.log(`${computerChoice} beat ${userChoice}, ${winner} wins!`);
-        return winner;
     } else if (computerChoice === "SCISSORS" && userChoice === "ROCK") {
         winner = "USER";
         console.log(`${userChoice} beat ${computerChoice}, ${winner} wins!`);
-        return winner;
     } else if (computerChoice === "ROCK" && userChoice === "SCISSORS") {
         winner = "COMPUTER";
         console.log(`${computerChoice} beat ${userChoice}, ${winner} wins!`);
-        return winner;
     } else if (computerChoice === userChoice) {
         winner = "DRAW"
         console.log(winner);
-        return winner;
-    }
+    };
 
-    scoreCounter();
+    return scoreCounter();
 }
 
+//Variables to show the score
+let userScoreHTML = document.querySelector(".userScore");
+userScoreHTML.textContent = userScore;
 
