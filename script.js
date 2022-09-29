@@ -75,8 +75,10 @@ function scoreCounter () {
 function endGame () {
     if (userScore === 5) {
         alert("User wins");
+        playAgain();
     } else if (computerScore === 5) {
         alert("Computer wins");
+        playAgain();
     } else {
         return;
     }
@@ -90,8 +92,22 @@ function resetGame () {
     computerScore.innerHTML = 0;
 }
 
-//Function to show a "Play again" button
-
+//Function to show a "Play again" button an remove the buttons to play
+//After clicking it, everything is restart
+function playAgain (){
+const playAgainButton = document.createElement("button");
+const scoreContainer = document.querySelector(".scoreContainer");
+const container = document.querySelector(".container");
+const buttonContainer = document.querySelector(".buttonContainer");
+playAgainButton.classList.add("playAgainButton");
+scoreContainer.appendChild(playAgainButton);
+playAgainButton.textContent = "PLAY AGAIN!";
+container.removeChild(buttonContainer);
+playAgainButton.addEventListener("click", () => {
+    container.prepend(buttonContainer);
+    scoreContainer.removeChild(playAgainButton);
+})
+}
 
 //Create a function that 
 //play a round, comparing the results, announcing a winner and 
