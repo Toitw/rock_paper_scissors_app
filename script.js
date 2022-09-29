@@ -25,14 +25,20 @@ function getComputerChoice() {
     const paperSelection = document.querySelector("#paperSelection");
     const scissorsSelection = document.querySelector("#scissorsSelection");
     rockSelection.addEventListener("click", () => {
+        announceWinner = "";
+        resultText.textContent = announceWinner;
         userChoice = rockSelection.innerHTML;
         playRound();
     });
     paperSelection.addEventListener("click", () => {
+        announceWinner = "";
+        resultText.textContent = announceWinner;
         userChoice = paperSelection.innerHTML;
         playRound();
     });
     scissorsSelection.addEventListener("click", () => {
+        announceWinner = "";
+        resultText.textContent = announceWinner;
         userChoice = scissorsSelection.innerHTML;
         playRound();
     });
@@ -43,15 +49,22 @@ function getComputerChoice() {
 let userScore = 0;
 let computerScore = 0;
 
+const resultTextContainer = document.querySelector(".resultTextContainer");
+const resultText = document.createElement("p");
+resultText.classList.add("resultText");
+resultTextContainer.appendChild(resultText);
 function scoreCounter () {
     switch (winner) {
         case "DRAW":
+            resultText.textContent = announceWinner;
             return;
             break;
         case "USER":
+            resultText.textContent = announceWinner;
             userScore++;
             break;
         case "COMPUTER":
+            resultText.textContent = announceWinner;
             computerScore++;
     }
     let userScoreHTML = document.querySelector(".userScore");
@@ -59,6 +72,7 @@ function scoreCounter () {
     let computerScoreHTML = document.querySelector(".computerScore");
     computerScoreHTML.textContent = computerScore;
 }
+
 // In the end I decided to use scoreCounter with switch
 // function scoreCounter2() {
 //     if (winner === "DRAW") {
@@ -115,31 +129,32 @@ playAgainButton.addEventListener("click", () => {
 //play a round, comparing the results, announcing a winner and 
 //finishing the game with an alert, and a button to play again
 let winner = "";
+let announceWinner = ""
 function playRound() {
     let computerChoice = getComputerChoice();
     console.log(computerChoice);
     console.log(userChoice);
     if (computerChoice === "ROCK" && userChoice === "PAPER") {
         winner = "USER";
-        console.log(`${userChoice} beats ${computerChoice}, ${winner} wins!`);
+        announceWinner = (`${userChoice} beats ${computerChoice}, ${winner} wins!`);
     } else if (computerChoice === "PAPER" && userChoice === "ROCK") {
         winner = "COMPUTER";
-        console.log(`${computerChoice} beats ${userChoice}, ${winner} wins!`);
+        announceWinner = (`${computerChoice} beats ${userChoice}, ${winner} wins!`);
     } else if (computerChoice === "PAPER" && userChoice === "SCISSORS") {
         winner = "USER";
-        console.log(`${userChoice} beat ${computerChoice}, ${winner} wins!`);
+        announceWinner = (`${userChoice} beat ${computerChoice}, ${winner} wins!`);
     } else if (computerChoice === "SCISSORS" && userChoice === "PAPER") {
         winner = "COMPUTER";
-        console.log(`${computerChoice} beat ${userChoice}, ${winner} wins!`);
+        announceWinner = (`${computerChoice} beat ${userChoice}, ${winner} wins!`);
     } else if (computerChoice === "SCISSORS" && userChoice === "ROCK") {
         winner = "USER";
-        console.log(`${userChoice} beat ${computerChoice}, ${winner} wins!`);
+        announceWinner = (`${userChoice} beat ${computerChoice}, ${winner} wins!`);
     } else if (computerChoice === "ROCK" && userChoice === "SCISSORS") {
         winner = "COMPUTER";
-        console.log(`${computerChoice} beat ${userChoice}, ${winner} wins!`);
+        announceWinner = (`${computerChoice} beat ${userChoice}, ${winner} wins!`);
     } else if (computerChoice === userChoice) {
         winner = "DRAW"
-        console.log(winner);
+        announceWinner = "It's a draw! No one wins, let's go for the next!";
     };
 
     scoreCounter();
