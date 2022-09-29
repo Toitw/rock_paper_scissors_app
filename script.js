@@ -103,12 +103,10 @@ const scoreContainer = document.querySelector(".scoreContainer");
 const container = document.querySelector(".container");
 const buttonContainer = document.querySelector(".buttonContainer");
 playAgainButton.classList.add("playAgainButton");
-scoreContainer.appendChild(playAgainButton);
 playAgainButton.textContent = "PLAY AGAIN!";
-container.removeChild(buttonContainer);
+container.replaceChild(playAgainButton, buttonContainer);
 playAgainButton.addEventListener("click", () => {
-    container.prepend(buttonContainer);
-    scoreContainer.removeChild(playAgainButton);
+    container.replaceChild(buttonContainer, playAgainButton);
     resetGame();
 });
 }
