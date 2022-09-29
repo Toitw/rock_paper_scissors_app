@@ -29,12 +29,31 @@ function getComputerChoice() {
         playRound();
     });
     paperSelection.addEventListener("click", () => {
-        console.log(paperSelection.innerHTML);
+        userChoice = paperSelection.innerHTML;
+        playRound();
     });
     scissorsSelection.addEventListener("click", () => {
-        console.log(scissorsSelection.innerHTML);
+        userChoice = scissorsSelection.innerHTML;
+        playRound();
     });
 
+
+//Create a function to keep a score 
+
+let userScore = 0;
+let computerScore = 0;
+function scoreCounter () {
+    switch (playRound) {
+        case "DRAW":
+            return;
+            break;
+        case "USER":
+            return userScore + 1;
+            break;
+        case "COMPUTER":
+            return computerScore ++;
+    }
+}
 
 //Create a function that 
 //play a round, comparing the results, announcing a winner and 
@@ -74,6 +93,8 @@ function playRound() {
         console.log(winner);
         return winner;
     }
+
+    scoreCounter();
 }
 
 
