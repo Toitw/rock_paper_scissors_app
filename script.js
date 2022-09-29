@@ -74,22 +74,25 @@ function scoreCounter () {
 // once anyone gets to 5 point
 function endGame () {
     if (userScore === 5) {
-        alert("User wins");
+        alert("User wins! Humans survive for now");
         playAgain();
     } else if (computerScore === 5) {
-        alert("Computer wins");
+        alert("Computer wins! Terminator was right :)");
         playAgain();
     } else {
         return;
     }
+
 }
 
 //Function to reset the game
 function resetGame () {
     userScore = 0;
     computerScore = 0;
-    userScore.innerHTML = 0;
-    computerScore.innerHTML = 0;
+    let userScoreHTML = document.querySelector(".userScore");
+    userScoreHTML.textContent = 0;
+    let computerScoreHTML = document.querySelector(".computerScore");
+    computerScoreHTML.textContent = 0;
 }
 
 //Function to show a "Play again" button an remove the buttons to play
@@ -106,12 +109,13 @@ container.removeChild(buttonContainer);
 playAgainButton.addEventListener("click", () => {
     container.prepend(buttonContainer);
     scoreContainer.removeChild(playAgainButton);
-})
+    resetGame();
+});
 }
 
 //Create a function that 
 //play a round, comparing the results, announcing a winner and 
-//returning the winner
+//finishing the game with an alert, and a button to play again
 let winner = "";
 function playRound() {
     let computerChoice = getComputerChoice();
@@ -141,9 +145,9 @@ function playRound() {
     };
 
     scoreCounter();
-    endGame();
+    setTimeout(endGame, 5); //I used setTimeout because otherwise the alert
+    //from endGame comes before scoreCounter finish to add the last point
 }
 
-//Variables to show the score
 
 
