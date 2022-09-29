@@ -19,32 +19,31 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-//Create a function that extract the user result form each click and play a round
+//Create a function that extract the user result form each click and play a round,
+//also reset the announceWinner to blank.
     const selectionButton = document.querySelector(".selectionButton");
     const rockSelection = document.querySelector("#rockSelection");
     const paperSelection = document.querySelector("#paperSelection");
     const scissorsSelection = document.querySelector("#scissorsSelection");
     rockSelection.addEventListener("click", () => {
-        announceWinner = "";
-        resultText.textContent = announceWinner;
+        resultText.textContent = "";
         userChoice = rockSelection.innerHTML;
         playRound();
     });
     paperSelection.addEventListener("click", () => {
-        announceWinner = "";
-        resultText.textContent = announceWinner;
+        //Set it blank so it don't add up
+        resultText.textContent = "";
         userChoice = paperSelection.innerHTML;
         playRound();
     });
     scissorsSelection.addEventListener("click", () => {
-        announceWinner = "";
-        resultText.textContent = announceWinner;
+        resultText.textContent = "";
         userChoice = scissorsSelection.innerHTML;
         playRound();
     });
 
 
-//Create a function to keep and display a score 
+//Create a function to keep and display a score and announce the winnerº
 
 let userScore = 0;
 let computerScore = 0;
@@ -87,6 +86,7 @@ function scoreCounter () {
 //Create a function to finish the game and display a message
 // once anyone gets to 5 point
 function endGame () {
+
     if (userScore === 5) {
         alert("User wins! Humans survive for now");
         playAgain();
@@ -99,7 +99,7 @@ function endGame () {
 
 }
 
-//Function to reset the game
+//Auxiliar function to reset the game
 function resetGame () {
     userScore = 0;
     computerScore = 0;
@@ -112,6 +112,7 @@ function resetGame () {
 //Function to show a "Play again" button an remove the buttons to play
 //After clicking it, everything is restart
 function playAgain (){
+resultText.textContent = "";
 const playAgainButton = document.createElement("button");
 const scoreContainer = document.querySelector(".scoreContainer");
 const container = document.querySelector(".container");
